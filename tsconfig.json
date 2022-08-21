@@ -14,8 +14,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "alwaysStrict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "strict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
@@ -26,8 +24,11 @@
     "declaration": true,
     "removeComments": true,
     "sourceMap": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "noEmitOnError": true,
+    "isolatedModules": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*"],
+  "include": ["netlify/**/*", "functions/getPostFromReddit.ts"],
   "exclude": ["**/__tests__", "node_modules"]
 }

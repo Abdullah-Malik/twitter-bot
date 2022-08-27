@@ -7,5 +7,4 @@ const handler: Handler = async () => {
   };
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { handler };
+export default handler;

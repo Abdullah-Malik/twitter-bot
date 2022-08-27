@@ -29,6 +29,6 @@
     "isolatedModules": true,
     "esModuleInterop": true
   },
-  "include": ["netlify/**/*", "functions/getPostFromReddit.ts"],
+  "include": ["src/**/*"],
   "exclude": ["**/__tests__", "node_modules"]
 }

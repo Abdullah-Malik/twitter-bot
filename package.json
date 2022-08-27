@@ -2,14 +2,14 @@
   "name": "twitter-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix --max-warnings=0",
     "format": "prettier . --write",
     "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix",
     "prepare": "husky install",
-    "netlify": "./node_modules/.bin/netlify functions:serve"
+    "netlify": "./node_modules/.bin/netlify functions:serve",
+    "start": "tsc && node --trace-warnings dist"
   },
   "husky": {
     "hooks": {

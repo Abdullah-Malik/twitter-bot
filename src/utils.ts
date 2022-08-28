@@ -1,4 +1,4 @@
-function getRandomValue(arr: string[], weights?: number[]) {
+function getRandomValue(arr: unknown[], weights?: number[]) {
   if (typeof weights === 'undefined') {
     // eslint-disable-next-line no-param-reassign
     weights = new Array(arr.length).fill(1 / arr.length);

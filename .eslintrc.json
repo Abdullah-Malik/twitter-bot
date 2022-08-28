@@ -43,6 +43,9 @@
         "tsx": "never"
       }
     ],
-    "prefer-destructuring": ["warn", { "object": true, "array": false }]
+    "prefer-destructuring": ["warn", { "object": true, "array": false }],
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-plusplus": "off",
+    "no-await-in-loop": "off"
   }
 }

@@ -1,6 +1,5 @@
-import Reddit from './content_sources/Reddit/Reddit';
+import getContentToPost from './content_sources/Reddit';
 
-const reddit = new Reddit();
-reddit.getContentToPost().then((posts) => {
+getContentToPost().then((posts) => {
   console.log(posts);
 });

@@ -1,5 +1,8 @@
-import getContentToPost from './content_sources/Reddit';
+import getContentSource from './content_sources';
 
-getContentToPost().then((posts) => {
-  console.log(posts);
-});
+const contentSource = getContentSource('Reddit');
+for (let i = 0; i < 500; i++) {
+  contentSource().then((post) => {
+    console.log(post);
+  });
+}

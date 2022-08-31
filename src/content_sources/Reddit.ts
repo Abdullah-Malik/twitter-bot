@@ -17,13 +17,31 @@ const subreddits = [
 const wordsToRemoveAndReplacements: Record<string, string> = {
   'ELI5:': '',
   'LPT:': '',
+  LPT: '',
   DAE: '',
   'eli5:': '',
   ELI5: '',
   eli5: '',
+  Eli5: '',
+  'Eli5:': '',
+  kill: '****',
+  Kill: '****',
+  KILL: '****',
+  SUICIDE: '*******',
+  Suicide: '*******',
 };
 
-const getContentToPost = async (): Promise<string> => {
+const doProcessingOnText = (text: string): string => {
+  let processedText = text;
+  Object.keys(wordsToRemoveAndReplacements).forEach((key) => {
+    processedText = processedText.replace(key, wordsToRemoveAndReplacements[key]);
+  });
+
+  processedText = processedText.trim();
+  return processedText;
+};
+
+const getContentFromReddit = async (): Promise<string> => {
   try {
     const randomSubreddit = getRandomValue(subreddits);
     const postsType = getRandomValue(['hot', 'top']);
@@ -37,11 +55,7 @@ const getContentToPost = async (): Promise<string> => {
 
     const { children: posts } = response.data.data;
     const randomPost: any = getRandomValue(posts);
-    let postTitle = randomPost.data.title;
-
-    Object.keys(wordsToRemoveAndReplacements).forEach((key) => {
-      postTitle = (postTitle as string).replace(key, wordsToRemoveAndReplacements[key]);
-    });
+    const postTitle = doProcessingOnText(randomPost.data.title);
 
     return postTitle;
   } catch (err) {
@@ -49,4 +63,4 @@ const getContentToPost = async (): Promise<string> => {
   }
 };
 
-export default getContentToPost;
+export default getContentFromReddit;

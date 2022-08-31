@@ -33,10 +33,12 @@ const wordsToRemoveAndReplacements: Record<string, string> = {
 
 const doProcessingOnText = (text: string): string => {
   let processedText = text;
+
   Object.keys(wordsToRemoveAndReplacements).forEach((key) => {
     processedText = processedText.replace(key, wordsToRemoveAndReplacements[key]);
   });
 
+  processedText = processedText.replace(/\/?u\/[A-Za-z0-9_-]+/g, 'she');
   processedText = processedText.trim();
   return processedText;
 };
@@ -59,7 +61,7 @@ const getContentFromReddit = async (): Promise<string> => {
 
     return postTitle;
   } catch (err) {
-    return err as string;
+    return '';
   }
 };
 

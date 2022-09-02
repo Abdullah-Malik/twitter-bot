@@ -1,10 +1,18 @@
 import { Handler } from '@netlify/functions';
+import getContentSource from '../src/content_sources';
 
 const handler: Handler = async () => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: 'Hello World' }),
-  };
+  try {
+    const getContent = getContentSource('Reddit');
+    const post = await getContent();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: post }),
+    };
+  } catch {
+    return { statusCode: 500, error: 'Internal server error' };
+  }
 };
 
-export default handler;
+// eslint-disable-next-line import/prefer-default-export
+export { handler };

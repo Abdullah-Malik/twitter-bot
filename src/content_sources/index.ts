@@ -1,6 +1,6 @@
 import getContentFromReddit from './Reddit';
 
-const getContentSource = (type: string) => {
+const getContentSource = (type: string): (() => Promise<string>) => {
   let contentSource = () => {
     return Promise.resolve('Invalid content source name');
   };

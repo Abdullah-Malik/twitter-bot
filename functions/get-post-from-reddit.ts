@@ -1,9 +1,9 @@
 import { Handler } from '@netlify/functions';
-import getContentSource from '../src/content_sources';
+import getContentSourceFunction from '../src/content_sources';
 
 const handler: Handler = async () => {
   try {
-    const getContent = getContentSource('Reddit');
+    const getContent = getContentSourceFunction('Reddit');
     const post = await getContent();
     return {
       statusCode: 200,

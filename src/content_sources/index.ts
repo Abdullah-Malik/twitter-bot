@@ -1,6 +1,6 @@
 import getContentFromReddit from './Reddit';
 
-const getContentSource = (type: string): (() => Promise<string>) => {
+const getContentSourceFunction = (type: string): (() => Promise<string>) => {
   let contentSource = () => {
     return Promise.resolve('Invalid content source name');
   };
@@ -12,4 +12,4 @@ const getContentSource = (type: string): (() => Promise<string>) => {
   return contentSource;
 };
 
-export default getContentSource;
+export default getContentSourceFunction;

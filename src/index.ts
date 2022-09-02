@@ -1,6 +1,6 @@
-import getContentSource from './content_sources';
+import getContentSourceFunction from './content_sources';
 
-const contentSource = getContentSource('Reddit');
+const contentSource = getContentSourceFunction('Reddit');
 for (let i = 0; i < 500; i++) {
   contentSource().then((post) => {
     console.log(post);

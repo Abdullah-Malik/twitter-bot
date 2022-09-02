@@ -1,7 +1,7 @@
 import { Handler } from '@netlify/functions';
 import getContentSourceFunction from '../src/content_sources';
 
-const handler: Handler = async () => {
+export const handler: Handler = async () => {
   try {
     const getContent = getContentSourceFunction('Reddit');
     const post = await getContent();
@@ -14,5 +14,4 @@ const handler: Handler = async () => {
   }
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { handler };
+export default handler;

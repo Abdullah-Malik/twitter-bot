@@ -12,6 +12,7 @@ const subreddits = [
   'CrazyIdeas',
   'pickuplines',
   'LifeProTips',
+  'self',
 ];
 
 const wordsToRemoveAndReplacements: Record<string, string> = {

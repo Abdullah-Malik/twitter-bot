@@ -5,7 +5,7 @@ import getContentSourceFunction from '../src/content_sources';
 
 dotenv.config();
 
-export const handler = schedule('*/30 8-23 * * *', async () => {
+export const handler = schedule('*/5 * * * *', async () => {
   const client = new TwitterApi({
     appKey: process.env.API_KEY || '',
     appSecret: process.env.API_KEY_SECRET || '',
@@ -14,9 +14,15 @@ export const handler = schedule('*/30 8-23 * * *', async () => {
   });
 
   const getContent = getContentSourceFunction('Reddit');
-  const post = await getContent();
+  try {
+    const post = await getContent();
+    const tweet = await client.v1.tweet(post);
 
-  client.v1.tweet(post);
+    console.log(post);
+    console.log(tweet);
+  } catch (err) {
+    console.log(err);
+  }
 
   return {
     statusCode: 200,

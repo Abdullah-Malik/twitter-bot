@@ -5,7 +5,7 @@ import getContentSourceFunction from '../src/content_sources';
 
 dotenv.config();
 
-export const handler = schedule('*/5 * * * *', async () => {
+export const handler = schedule('*/43 * * * *', async () => {
   const client = new TwitterApi({
     appKey: process.env.API_KEY || '',
     appSecret: process.env.API_KEY_SECRET || '',

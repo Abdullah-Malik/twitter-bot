@@ -1,8 +1,10 @@
 import { TwitterApi } from 'twitter-api-v2';
 import * as dotenv from 'dotenv';
-// import getContentSourceFunction from './content_sources';
+import { connection } from './db';
+import { User } from './models';
 
 dotenv.config();
+connection();
 
 const client = new TwitterApi({
   appKey: process.env.API_KEY || '',
@@ -12,11 +14,10 @@ const client = new TwitterApi({
 });
 
 (async () => {
-  // const getContent = getContentSourceFunction('Reddit');
-  // const post = await getContent();
-  // console.log(post);
-  const res = await client.v1.destroyFriendship({ screen_name: 'elonmusk' });
-  console.log(res);
+  const elonmusk = await client.v1.user({ screen_name: 'elonmusk' });
+  const user = new User(elonmusk);
+  console.log(user);
+  user.save();
 })();
 
 export {};

@@ -1,9 +1,13 @@
 import mongoose from 'mongoose';
 
-export const connection = async () => {
+export const connect = async () => {
   await mongoose.connect(process.env.MONGODB_URL || '', {
     dbName: 'twitter-bot',
   });
 };
 
-export default connection;
+export const disconnect = async () => {
+  await mongoose.disconnect();
+};
+
+export default connect;

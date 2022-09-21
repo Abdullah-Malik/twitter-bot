@@ -1,18 +1,11 @@
 import { schedule } from '@netlify/functions';
 import * as dotenv from 'dotenv';
-import { TwitterApi } from 'twitter-api-v2';
 import getContentSourceFunction from '../src/content_sources';
+import { client } from '../src/client';
 
 dotenv.config();
 
 export const handler = schedule('*/43 * * * *', async () => {
-  const client = new TwitterApi({
-    appKey: process.env.API_KEY || '',
-    appSecret: process.env.API_KEY_SECRET || '',
-    accessToken: process.env.ACCESS_TOKEN || '',
-    accessSecret: process.env.ACCESS_TOKEN_SECRET || '',
-  });
-
   const getContent = getContentSourceFunction('Reddit');
   try {
     const post = await getContent();

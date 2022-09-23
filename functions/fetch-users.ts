@@ -16,8 +16,8 @@ export const handler = schedule('@hourly', async (event) => {
     const followingPaginator = await client.v2.following(firstUser.id_str, { asPaginator: true });
 
     await followingPaginator.fetchLast(1000);
-    await FetchedUser.insertMany(followingPaginator.data.data, { ordered: false });
     await SeedUser.deleteOne({ screen_name: firstUser.screen_name });
+    await FetchedUser.insertMany(followingPaginator.data.data, { ordered: false });
   }
 
   disconnect();

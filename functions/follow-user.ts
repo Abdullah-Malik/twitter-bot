@@ -10,12 +10,11 @@ export const handler = schedule('*/20 * * * *', async (event) => {
   connect();
 
   const user = await FetchedUser.findOne();
-  const followedUser = await client.v1.createFriendship({ user_id: user?.id });
-  FetchedUser.deleteOne({ id: user?.id });
+  await client.v1.createFriendship({ user_id: user?.id });
+  await FetchedUser.deleteOne({ id: user?.id });
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: user }),
   };
 });
 

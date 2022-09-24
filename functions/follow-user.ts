@@ -6,7 +6,7 @@ import { FetchedUser } from '../src/models';
 
 dotenv.config();
 
-export const handler = schedule('*/20 * * * *', async (event) => {
+export const handler = schedule('*/15 * * * *', async (event) => {
   connect();
 
   const user = await FetchedUser.findOne();

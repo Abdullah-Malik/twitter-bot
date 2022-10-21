@@ -33,7 +33,8 @@ export const userV2Schema = new Schema(
   }
 );
 
-export const SeedUser = mongoose.model('SeedUser', userV1Schema);
-export const FetchedUser = mongoose.model('FetchedUser', userV2Schema);
+// export const SeedUser = mongoose.model('SeedUser', userV1Schema);
+export const User = mongoose.model('User', userV2Schema);
+export const Following = mongoose.model('Following', userV2Schema);
 
-export default SeedUser;
+export default User;

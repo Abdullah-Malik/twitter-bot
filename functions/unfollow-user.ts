@@ -14,7 +14,7 @@ export const handler = schedule('*/11 * * * *', async (event) => {
     user = await Following.findOne();
     await client.v1.destroyFriendship({ user_id: user?.id });
   } catch (err) {
-    console.log(err);
+    console.log(user, err);
   } finally {
     await Following.deleteOne({ id: user?.id });
   }

@@ -12,11 +12,11 @@ export const handler = schedule('*/11 * * * *', async (event) => {
 
   try {
     user = await Following.findOne();
-    await client.v1.destroyFriendship({ user_id: user?.id });
+    await client.v1.destroyFriendship({ screen_name: user.username });
   } catch (err) {
     console.log(user, err);
   } finally {
-    await Following.deleteOne({ id: user?.id });
+    await Following.deleteOne({ id: user.id });
   }
 
   return {

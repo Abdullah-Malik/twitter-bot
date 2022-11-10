@@ -6,7 +6,7 @@ import { User, Following } from '../src/models';
 
 dotenv.config();
 
-export const handler = schedule('*/8 * * * *', async (event) => {
+export const handler = schedule('*/7 * * * *', async (event) => {
   connect();
   let user;
 

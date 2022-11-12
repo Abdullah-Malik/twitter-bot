@@ -3,14 +3,12 @@ import getRandomValue from '../utils';
 
 const subreddits = [
   'Showerthoughts',
-  'oneliners',
   'AskReddit',
   'Jokes',
   'explainlikeimfive',
   'bestof',
   'DoesAnybodyElse',
   'CrazyIdeas',
-  'pickuplines',
   'LifeProTips',
   'self',
 ];

@@ -5,7 +5,7 @@ import { client } from '../src/client';
 
 dotenv.config();
 
-export const handler = schedule('0 0 * * *', async () => {
+export const handler = schedule('0 0 1 1 *', async () => {
   const getContent = getContentSourceFunction('Reddit');
   try {
     const post = await getContent();
